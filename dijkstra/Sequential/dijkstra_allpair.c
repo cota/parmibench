@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 
 #define NUM_NODES                          160 //small:16, large:160
