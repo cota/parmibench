@@ -1,13 +1,18 @@
-all:  dijkstra_large dijkstra_small dijkstra_allpair
+CC := $(CROSS_COMPILE)gcc
+CFLAGS := -static -O3
+
+OBJS := dijkstra_large dijkstra_small dijkstra_allpair
+
+all: $(OBJS)
 
 dijkstra_large: dijkstra_large.c Makefile
-	gcc -static dijkstra_large.c -O3 -o dijkstra_large
+	$(CC) $(CFLAGS) $< -o $@
 
 dijkstra_small: dijkstra_small.c Makefile
-	gcc -static dijkstra_small.c -O3 -o dijkstra_small
+	$(CC) $(CFLAGS) $< -o $@
 
 dijkstra_allpair: dijkstra_allpair.c Makefile
-	gcc -static dijkstra_allpair.c -O3 -o dijkstra_allpair
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -rf dijkstra_large dijkstra_small dijkstra_allpair output*
+	rm -rf $(OBJS) output*
