@@ -16,3 +16,5 @@ dijkstra_allpair: dijkstra_allpair.c
 
 clean:
 	rm -rf $(OBJS) output*
+
+.PHONY: all clean
