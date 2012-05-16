@@ -1,0 +1,22 @@
+
+			1. Sequential Version
+**************************************************************************************************************************
+ (1). patricia.c
+Task: Make a patricia tree with 5000 IP addresses, and look up these ip addresses in that tree;
+Shell: runme_small.sh
+Input: input.dat  (5000 IP addresses)
+Output:No printing output
+**************************************************************************************************************************
+
+
+			2. Parallel Version
+**************************************************************************************************************************
+ (1). patricia_parallel.c 
+Strategy: Even partitioning IP lookup tasks to each cpu;
+Shell: runme_parallel.sh
+Input: input.dat (5000 IP addresses)
+Output:No printing output
+
+Macros:
+	PROCESSORS=8 (parallel.h)
+**************************************************************************************************************************

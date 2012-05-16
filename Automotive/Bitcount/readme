@@ -1,0 +1,76 @@
+
+	1. Algorithm Direction:
+**************************************************************************************************************************
+Bitcount consists of a few of executable sub-algorithms.
+An additional file about 'snip_str' must be download from[2] to be compatible running on Linux platform. 
+
+(1). How to run different sub-algorithm?
+There is a macro definition to control which sub-algorithm should be run right now as you want? When you open each source code, you can find 2 lines of code are "#ifdef TEST" and "#endif" respectively. You can annotate them using "//" if you wanna run this subalgorithm, vice verse, to anti-annotate them when you wanna close its execution meanwhile running other sub-algorithm. Don't keep more then one "TEST" that is annotated, otherwise, an error is gonna show up when making. After changing, don't forget to make them again.
+
+
+(2).  Which sub-algorithms are parallelized?
+Among of them, 3 sub-algorithms have been parallelized. Others are impossible to parallelize by reason of sequential logics or only a few of sequentially separate instructions.
+	a. "bitcnts.c" is parallelized and renamed as "bitcnts_parallel.c";
+	b. "bitcnt_1.c" is parallelized and renamed as "bitcnt_1_parallel.c";
+	c. "bitstring" is parallelized according to 2 different parallelization strategies, which are source-partitioned formualation and source-parallel formulation[1]. They are renamed as "bitstring_partition_spf.c" and "bitstring_parallel_spf.c" respectively.
+**************************************************************************************************************************
+
+
+
+
+
+	2. Parameter Direction:
+**************************************************************************************************************************	
+(1) bitcnts_parallel.c
+  "randSeed" is a parameter that controls input. We keep it constant in order to keeping a same input to algorithm when testing performance of sequential and parallel version. Otherwise, the performance is comparable when the input is random number to different version;
+  "iteration" is a one that controls the running times which is obtained from an executable shell fie outside;
+
+(2) bitcn_1_parallel.c
+  "LENGTH" is macro that controls the iteration times namely the number of inputs;
+   "n" is a parameter from shell file to control to exact input value;
+
+(3) bitstring_parallel_spf.c & bitstring_partition_spf.c
+   "strwid" is a variable used in logic calculation, which could be any numeric.
+    "csize" is a variable to define the size of an intermediate variable array.
+    "iteration" is to control the iterative times;
+**************************************************************************************************************************
+
+
+
+
+
+
+	2. Thread Ecapsulation file Direction:
+**************************************************************************************************************************
+We provide 2 separate files for pthread common functions that are commonly used by above 4 parallel algorithms, they are "phead.h" and "pt.c".
+(1) pt_head.h
+  "PROCESSORS" is a macro to define the amount of available cpus;
+  "GROUPS" is a macro to control how many groups cpus can partition; 
+	Here, we provide the following options:
+		CPUS		Groups
+		 2		 1,2
+		 4		 1,2,4
+		 6		 1,2,3,6
+		 8		 1,2,4,8
+      Note, "GROUPS" is only useful in bitstring_parallel_spf.c
+
+**************************************************************************************************************************
+
+
+
+
+
+	3. Executable Shell:
+**************************************************************************************************************************
+A few of executable shells are provided to easily execute the programs, as well, you could change some input parameters and output file.
+**************************************************************************************************************************
+
+
+
+
+
+
+	4. References:
+**************************************************************************************************************************
+[1]. <<Introduction to Parallel Computing>>  second Edition;
+[2]. http://c.snippets.org/snip_lister.php?fname=snip_str.h

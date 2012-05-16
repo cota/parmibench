@@ -1,0 +1,77 @@
+			1. Dijkstra Single-source shortest path parallelization
+**************************************************************************************************************************
+Task: get the shortest paths from node 0 to node 1999 (large input), or from node 0 to node 15(small input);
+
+ (1). dijkstra_parallel_mqueue.c
+Strategy: each cpu has its own queue;
+Shell: runme_parallel_large_m.sh, runme_parallel_small_m.sh
+Input: input_large.dat(nodes=2000), input_small.dat(nodes=16)
+Ouput: output_small_m.dat, output_small_m.dat
+
+ (2). dijkstra_parallel_squeue.c
+Strategy: all cpus share a common queue;
+Shell: runme_parallel_large_s.sh, runme_parallel_small_s.sh
+Input: input_large.dat(nodes=2000), input_small.dat(nodes=16)
+Output:output_large_s.dat, output_small_s.dat
+
+Variable: 
+	large input: chStart=0,chEnd=1999;
+	small input: chstart=0,chEnd=15;
+Macros:
+	PROCESSORS=8;
+	NONE=9999;(infinitely maximum)
+	large input: NUM_NODES=2000;
+	small input: NUM_NODES=16;	
+**************************************************************************************************************************
+
+
+
+
+
+			2. Dijkstra All-pairs shortest path parallelization
+**************************************************************************************************************************
+ (1). dijkstra_all_pair.c 
+Strategy: A cpu is to calculate the assigned tasks of source-single shortest paths;
+Shell: runme_parallel_large_allpair.sh, runme_parallel_small_allpair.sh
+Input: spf.dat(nodes=160), input_small.dat(nodes=16)
+Output:output_large.dat, output_small.dat
+
+Variable: 
+	large input: i<159; j<160;
+	small input: i<15,j<16;
+Macros:
+	PROCESSORS=8;
+	NONE=9999;(infinitely maximum)
+	large input: NUM_NODES=160;
+	small input: NUM_NODES=16;
+**************************************************************************************************************************
+
+
+
+
+
+
+			3. Sequential Version
+**************************************************************************************************************************
+ (1). dijkstra_large.c
+Task: calculate the single-source shortest paths from node 0 to node 1999;
+Shell: runme_large.sh
+Input: input_large.dat  
+Output:output_large.dat
+
+ (2). dijkstra_small.c
+Task: calculate the single-source shortest paths from node 1 to node 15;
+Shell: runme_small.sh
+Input: input_small.dat  
+Output:output_small.dat
+
+ (3). dijkstra_allpair.c
+Task: calculate the all-pairs shortest paths with nodes=16(small input) or 160(large input);
+Shell: runme_large_allpair.sh, runme_small_allpair.sh
+Input: spf.dat, input_small.dat
+Output:output_large.dat, output_small.dat
+Macros:
+	NUM_NODES                          160 //small:16, large:160
+	small input: i<15; j<16;
+	large input: i<159; j<160;
+**************************************************************************************************************************

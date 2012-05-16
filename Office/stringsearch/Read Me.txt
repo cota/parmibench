@@ -1,0 +1,36 @@
+|*******************************************************************************|
+|	    				   StringSearch				              |                  
+|		               Parallel 1.0 Version with Pthread			  |
+|													  |		
+| Authors:           	Yuchen Liang and Syed Muhammad Zeeshan Iqbal            |
+| Email Contact:        yuchen9760@gmail.com,mzeeshan01@gmail.com               | 
+| Supervisor:		Hakan Grahn (hakan.grahn@bth.se)	                    | 						
+| Section:          	Computer Science of BTH,Sweden                          |
+| GCC Version:				4.2.4				                    |				
+| Environment: 		Kraken(Ubuntu4.2.4) with Most 8 Processors              |				
+| Start Date:       	15th September 2009					        |
+| End Date:         	6th October 2009			                          |
+|*******************************************************************************|
+ .a) The 'parallel_stringsearch' perform string search operations by employing 
+     parallelization technique on two text files of size:small and 
+     large. 
+
+    The variable 'MAX_WORKERS' represents the number of processors.
+    On subjected platform its maximum value is 8.
+
+ .b) String Search Operations:
+	1. Pratt-Boyer-Moore String Search.
+	2. Case-sensitive Boyer-Moore-Horspool String Search.
+	3. Case-Insensitive Boyer-Moore-Horspool String Search.
+	4. Boyer-Moore-Horspool (Case-insensitive with accented character translation) String Search.
+
+ .c) How to Run.
+     Commands to run!
+     Command Format: OjbectFileName <StringSearchMethod> Workers <InputFileName> <PatternFileName>!
+
+     Example: 
+	        Small Text File:
+	 		  ./parallel_stringsearch  2 1 testdata/SearchString16.txt testdata/testpattern5.txt;
+
+              Large Text File:
+	 		  ./parallel_stringsearch  2 1 testdata/SearchString32.txt testdata/testpattern5.txt;

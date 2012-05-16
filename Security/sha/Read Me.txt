@@ -1,0 +1,31 @@
+|*******************************************************************************|
+|   				   SHA-1 (Secure Hash Algorithm)	             	  |                  
+|		               Parallel 1.0 Version with Pthread			  |
+|													  |		
+| Authors:           	Yuchen Liang and Syed Muhammad Zeeshan Iqbal            |
+| Email Contact:        yuchen9760@gmail.com,mzeeshan01@gmail.com               | 
+| Supervisor:		Hakan Grahn (hakan.grahn@bth.se)	                    | 						
+| Section:          	Computer Science of BTH,Sweden                          |
+| GCC Version:				4.2.4				                    |				
+| Environment: 		Kraken(Ubuntu4.2.4) with Most 8 Processors              |				
+| Start Date:       	15th September 2009					        |
+| End Date:         	6th October 2009			                          |
+|*******************************************************************************|
+ .a) The parallel 'sha' perform digest computation of file and place the digest
+     in separate output file by employing input data partition strategy. The 
+     process of digest calculation of different files is run parallely by 
+     different threads.
+
+     The variable 'MAX_WORKERS' represents the number of processors.
+     On subjected platform its maximum value is 8.
+
+ .c) How to Run.
+     Commands to run!
+     Command Format: OjbectFileName <StringSearchMethod> Workers <InputFileName> <PatternFileName>!
+
+     Example: 
+	       Commands to run!
+		 Command Format: OjbectFileName -Sequential(S)/Parallel(P) -Workers!
+		 Example: sequential SHA: ' ./sha -S   '!                           
+		 Example: parallel SHA  : ' ./sha -P -2 '!                     
+

@@ -1,0 +1,34 @@
+|*******************************************************************************|
+|	    				   Basicmath				              |                  
+|		        Parallel 1.0 Version with Pthread			              |
+|													  |		
+| Authors:           	Yuchen Liang and Syed Muhammad Zeeshan Iqbal            |
+| Email Contact:        yuchen9760@gmail.com,mzeeshan01@gmail.com               | 
+| Supervisor:		Hakan Grahn (hakan.grahn@bth.se)	                    | 						
+| Section:          	Computer Science of BTH,Sweden                          |
+| GCC Version:				4.2.4				                    |				
+| Environment: 		Kraken(Ubuntu4.2.4) with Most 8 Processors              |				
+| Start Date:       	15th September 2009					        |
+| End Date:         	6th October 2009			                          |
+|*******************************************************************************|
+ .a) The 'parallel_basicmath' math perform basic math calculations by employing 
+     parallelization technique on two sets of data:one is small data set and 
+     other is largedata set. In source file 'LARGE' have two values
+
+   		1		=	Large Data Set
+		0		= 	Small Data Set
+
+    The variable 'MAX_WORKERS' represents the number of processors.
+    On subjected platform its maximum value is 8.
+
+ .b) Basic Math Calculation Types:
+	1. Solve Cubic Equations
+	2. Find Integer Square Roots
+	3. Find Square Roots of Long type numbers.
+	4. Perform Degree To Radian Conversion.
+	5. Perform Radian To Degree Conversion.
+ .c) How to Run
+     Commands to run!
+     Command Format: OjbectFileName <Math Operation> Workers DataSetSize
+     Example:
+             ./parallel_basicmath 1 2 1 
