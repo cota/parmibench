@@ -1,5 +1,5 @@
 CC := $(CROSS_COMPILE)gcc
-CFLAGS := -lpthread
+CFLAGS := -lpthread -O2
 
 OBJS := dijkstra_parallel_mqueue dijkstra_parallel_squeue dijkstra_allpair
 

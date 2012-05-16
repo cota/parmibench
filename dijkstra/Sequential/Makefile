@@ -1,5 +1,5 @@
 CC := $(CROSS_COMPILE)gcc
-CFLAGS := -static -O3
+CFLAGS := -static -O2
 
 OBJS := dijkstra_large dijkstra_small dijkstra_allpair
 
