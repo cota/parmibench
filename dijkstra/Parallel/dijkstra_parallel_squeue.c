@@ -17,10 +17,11 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <sys/types.h>
+#include "params.h"
 
 #define NUM_NODES                          2000	//16 for small input; 2000 for large input
+
 #define NONE                               9999	//Maximum
-#define PROCESSORS				 8	//The amount of processor
 
 /* define a thread pool */
 struct _THREADPOOL{
