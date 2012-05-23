@@ -391,7 +391,7 @@ int main(int argc,char *argv[])
 	 if (argc<4 ||argc>4){
    	   printf("|-----------------------------------------------------------------------|\n");
        printf("	Error: Insufficient Parameters.                             \n");
-       printf("	Maximum Workers are 8!\n");             
+       printf("	Maximum Workers are %d!\n", PROCESSORS);
        printf("	AVAILABLE MATHEMATICAL OPERATIONS         \n");
        printf("	1 :  SOLVE CUBIC EQUATIONS         \n");
        printf("	2 :  CALCULATE INTEGER SQR ROOTS \n");
