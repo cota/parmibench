@@ -574,7 +574,8 @@ patricia_node_t *patricia_search_best2 (patricia_tree_t *patricia, prefix_t *pre
     	        		fprintf (stderr, "patricia_search_best: take right %s/%d\n", prefix_toa (node->prefix), node->prefix->bitlen);
 	    		else
     	        		fprintf (stderr, "patricia_search_best: take right at %d\n", node->bit);
-			#endif /* PATRICIA_DEBUG */fprintf (stderr, "patricia_search_best: found %s/%d\n", prefix_toa (node->prefix), node->prefix->bitlen);
+			#endif /* PATRICIA_DEBUG */
+			fprintf (stderr, "patricia_search_best: found %s/%d\n", prefix_toa (node->prefix), node->prefix->bitlen);
 	    		node = node->r;
 		}else {
 			#ifdef PATRICIA_DEBUG
