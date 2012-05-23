@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <stdlib.h>
-#define PROCESSORS				8	//The amount of processors
+#include "params.h"
+
 #define GROUPS					3	//The amount of groups
 
 int groups[PROCESSORS]; 	//a member is in which group
