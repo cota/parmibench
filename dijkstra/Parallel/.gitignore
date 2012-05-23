@@ -1,4 +1,3 @@
 dijkstra_allpair
 dijkstra_parallel_mqueue
 dijkstra_parallel_squeue
-params.h
