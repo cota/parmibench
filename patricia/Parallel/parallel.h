@@ -1,6 +1,6 @@
 #include <pthread.h>
 
-#define PROCESSORS			8	//The amount of processor
+#include "params.h"
 
 /* define a thread pool */
 struct _THREADPOOL{
