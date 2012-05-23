@@ -15,7 +15,7 @@
      parallelization technique on two text files of size:small and 
      large. 
 
-    The variable 'MAX_WORKERS' represents the number of processors.
+    The variable 'PROCESSORS' represents the number of processors.
     On subjected platform its maximum value is 8.
 
  .b) String Search Operations:

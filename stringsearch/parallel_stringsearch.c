@@ -34,7 +34,8 @@
 #include <limits.h>
 #include <pthread.h>
 
-#define MAX_WORKERS 8
+#include "params.h"
+
 #define NO_OF_QUERY_STRINGS 1024
 
 #define PRINT 			0 //  1 for print. 0 for no print
@@ -53,7 +54,7 @@ typedef struct Params {
 
 static int partition_size;
 static int search_method;
-static parameters paramsArr[MAX_WORKERS];
+static parameters paramsArr[PROCESSORS];
 
 char* search_strings;
 //char* find_strings[] = {"aaa1","bbb2","bbbbbbaaaa1","a!","AlI1","ali1","aaa","asd",NULL};
@@ -71,7 +72,7 @@ int no_workers;
  
 pthread_attr_t string_attr;
 pthread_mutex_t string_mutex;
-pthread_t workers[MAX_WORKERS]; 
+pthread_t workers[PROCESSORS];
 
 
 /*
@@ -304,7 +305,7 @@ int main(int argc,char *argv[])
 	 if (argc<5 ||argc>5){
    	   printf("|-----------------------------------------------------------------------|\n");
        printf("	Error: Insufficient Parameters.                             \n");
-       printf("	Maximum Workers are 8!\n");
+       printf("	Maximum Workers are %d!\n", PROCESSORS);
        printf("	1 :  Pratt-Boyer-Moore         \n");
        printf("	2 :  Case-sensitive Boyer-Moore-Horspool \n");
        printf("	3 :  Case-Insensitive Boyer-Moore-Horspool \n");
@@ -320,8 +321,8 @@ int main(int argc,char *argv[])
         
        if (isdigit(*argv[2])!=0){
 			     no_workers= atoi(argv[2]);
-			     if (no_workers >MAX_WORKERS){
-			         printf("ERROR: Number of worker should be no more than 8\n");
+			     if (no_workers >PROCESSORS){
+				     printf("ERROR: Number of worker should be no more than %d\n", PROCESSORS);
 			         exit(0);
 			     }   
 			 }else{

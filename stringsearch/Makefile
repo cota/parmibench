@@ -1,9 +1,22 @@
-FILE1 = bmhasrch.c  bmhisrch.c  bmhsrch.c  parallel_stringsearch.c 
+PROCESSORS ?= 4
 
-all: parallel_stringsearch
+CC := $(CROSS_COMPILE)gcc
+CFLAGS := -lpthread -O2
 
-parallel_stringsearch: ${FILE1} Makefile
-	gcc -static ${FILE1} -O3 -o parallel_stringsearch -lpthread
+PARAMS := params.h
+OBJS := parallel_stringsearch
+
+SRCS := bmhasrch.c  bmhisrch.c  bmhsrch.c  parallel_stringsearch.c
+
+all: $(OBJS)
+
+parallel_stringsearch: $(SRCS) $(PARAMS)
+	$(CC) $(CFLAGS) $(SRCS) -o $@
+
+$(PARAMS):
+	./gen_defs.sh $(PARAMS) $(PROCESSORS)
 
 clean:
-	rm -rf parallel_stringsearch output*
+	rm -rf $(OBJS) output* $(PARAMS)
+
+.PHONY: all clean $(PARAMS)
