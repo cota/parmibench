@@ -321,7 +321,9 @@ typedef float      TOTAL_TYPE; /* for my PowerPC accelerator only */
 #include <malloc.h>      /* may want to remove this line */
 #define  exit_error(IFB,IFC) { fprintf(stderr,IFB,IFC); exit(0); }
 #define  FTOI(a) ( (a) < 0 ? ((int)(a-0.5)) : ((int)(a+0.5)) )
-#define PROCESSORS				 8	//The amount of processor
+
+#include "params.h"
+
 typedef  unsigned char uchar;
 typedef  struct {int x,y,info, dx, dy, I;} CORNER_LIST; //CORNER_LIST[MAX_CORNERS];	Notice:i modifiy the definition of CORNER_LIST
 
