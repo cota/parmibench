@@ -16,7 +16,7 @@
      process of digest calculation of different files is run parallely by 
      different threads.
 
-     The variable 'MAX_WORKERS' represents the number of processors.
+     The variable 'PROCESSORS' represents the number of processors.
      On subjected platform its maximum value is 8.
 
  .c) How to Run.

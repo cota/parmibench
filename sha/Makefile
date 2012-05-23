@@ -3,12 +3,23 @@
 # To make smaller object code, but run a little slower, don't use UNROLL_LOOPS.
 # To use NIST's modified SHA of 7/11/94, define USE_MODIFIED_SHA
 
-CC = gcc
-CFLAGS = -O3 -Wall
+PROCESSORS ?= 4
 
-sha:	sha_driver.o sha.o
-	$(CC) -o $@ -lpthread sha_driver.o sha.o
-	strip $@
+CC := $(CROSS_COMPILE)gcc
+CFLAGS := -lpthread -O2
+
+PARAMS := params.h
+OBJS := sha
+
+all: $(OBJS)
+
+sha: sha_driver.c sha.c $(PARAMS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(PARAMS):
+	./gen_defs.sh $(PARAMS) $(PROCESSORS)
 
 clean:
-	rm -rf *.o sha output*
+	rm -rf $(OBJS) output* $(PARAMS)
+
+.PHONY: all clean $(PARAMS)

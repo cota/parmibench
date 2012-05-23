@@ -23,8 +23,9 @@
 #include <pthread.h>
 #include "sha.h"
 
+#include "params.h"
+
 #define MAX_NO_FILES 16
-#define MAX_WORKERS 8
 #define PRINT 0
 
 
@@ -45,14 +46,14 @@ char* out_file_list[]={"out_file1.txt","out_file2.txt","out_file3.txt","out_file
 
 
 int no_files=16;
-int no_workers=8;
+int no_workers=PROCESSORS;
 
 pthread_attr_t string_attr;
 pthread_mutex_t string_mutex;
-pthread_t workers[MAX_WORKERS]; 
+pthread_t workers[PROCESSORS];
 
 static int partition_size;
-static parameters paramsArr[MAX_WORKERS];
+static parameters paramsArr[PROCESSORS];
 
 
 void readFilesData(){
@@ -207,7 +208,7 @@ int main(int argc,char *argv[])
       if (argc<2 ||argc>3){
       	  printf("|-----------------------------------------------------------------------|\n");
       	  printf("	Error: Insufficient Parameters.                             \n");
-      	  printf("	Maximum Workers are 8. Number of workers should be even!\n");
+	  printf("	Maximum Workers are %d. Number of workers should be even!\n", PROCESSORS);
       	  printf("	Commands to run!                             \n");
       	  printf("	Command Format: OjbectFileName -Sequential(S)/Parallel(P) -Workers!\n");
       	  printf("	Example: sequential SHA: ' ./sha -S   '!                             \n");
@@ -227,7 +228,7 @@ int main(int argc,char *argv[])
 			      	    	     token++;
 			      	    	     if (isdigit(*token)!=0){
 			      	    	         no_workers= atoi(token);
-			      	    	    		 /*if (no_workers%2 != 0 || no_workers >MAX_WORKERS)
+						 /*if (no_workers%2 != 0 || no_workers >PROCESSORS)
 			      	    	    		     printf("ERROR: Number of worker should be even and no more than 8\n");
 			      	    	    		 else {*/
 			      	    	    		 	   readFilesData();
