@@ -1,5 +1,14 @@
-susan: susan.c Makefile
-	gcc -static -O4 -o susan susan.c -lm 
+CC := $(CROSS_COMPILE)gcc
+CFLAGS := -O2 -lm
+
+OBJS := susan
+
+all: $(OBJS)
+
+susan: susan.c
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
-	rm -rf susan output*
+	rm -rf $(OBJS) output*
+
+.PHONY: clean all
