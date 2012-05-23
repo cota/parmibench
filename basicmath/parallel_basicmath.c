@@ -19,8 +19,7 @@
 #include <pthread.h>
 #define  PRINT  0 // Print Switch
 
-
-#define MAX_WORKERS 8
+#include "params.h"
 
 #define 		CUBIC 		1
 #define 		ISQRT			2
@@ -38,7 +37,7 @@
 #define     ONE_GIGA_NUMBERS 1024*1024*1024
 
 pthread_attr_t string_attr;
-pthread_t workers[MAX_WORKERS]; 
+pthread_t workers[PROCESSORS];
 int math_operation;
 int data_set_type;
 int no_workers;
@@ -63,10 +62,10 @@ typedef struct DoubleLimits{  // Limits of double type
 }dlimit;
 
 
-	static ilimit  _ilim,_ilimParams[MAX_WORKERS];
-  static ullimit _ullim,_ullimParams[MAX_WORKERS];
-  static dlimit  _dlim1,_dlim2,_dlimParams1[MAX_WORKERS],_dlimParams2[MAX_WORKERS];
-  static dlimit  _adlim,_bdlim,_cdlim,_ddlim,_adlimParams[MAX_WORKERS];  // double type limits for variable's a,b,c,d
+	static ilimit  _ilim,_ilimParams[PROCESSORS];
+  static ullimit _ullim,_ullimParams[PROCESSORS];
+  static dlimit  _dlim1,_dlim2,_dlimParams1[PROCESSORS],_dlimParams2[PROCESSORS];
+  static dlimit  _adlim,_bdlim,_cdlim,_ddlim,_adlimParams[PROCESSORS];  // double type limits for variable's a,b,c,d
 
 
 
@@ -414,7 +413,7 @@ int main(int argc,char *argv[])
         
        if (isdigit(*argv[2])!=0){
 			     no_workers= atoi(argv[2]);
-			     if (no_workers >MAX_WORKERS){
+			     if (no_workers >PROCESSORS){
 			         printf("ERROR: Number of worker should be no more than 8\n");
 			         exit(0);
 			     }   

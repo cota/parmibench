@@ -18,7 +18,7 @@
    		1		=	Large Data Set
 		0		= 	Small Data Set
 
-    The variable 'MAX_WORKERS' represents the number of processors.
+    The variable 'PROCESSORS represents the number of processors.
     On subjected platform its maximum value is 8.
 
  .b) Basic Math Calculation Types:
@@ -31,4 +31,4 @@
      Commands to run!
      Command Format: OjbectFileName <Math Operation> Workers DataSetSize
      Example:
-             ./parallel_basicmath 1 2 1 
+             ./parallel_basicmath 1 2 1
