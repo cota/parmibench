@@ -1,5 +1,5 @@
 CC := $(CROSS_COMPILE)gcc
-CFLAGS := -static -O2
+CFLAGS := -O2
 
 OBJS := bitcnts
 

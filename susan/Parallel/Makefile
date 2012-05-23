@@ -9,7 +9,7 @@ OBJS := susan_parallel
 all: $(OBJS)
 
 susan_parallel: susan_parallel.c $(PARAMS)
-	$(CC) -static $< -o $@ $(CFLAGS)
+	$(CC) $< -o $@ $(CFLAGS)
 
 $(PARAMS):
 	./gen_defs.sh $(PARAMS) $(PROCESSORS)
